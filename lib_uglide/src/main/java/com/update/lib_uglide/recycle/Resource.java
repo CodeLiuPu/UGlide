@@ -43,7 +43,7 @@ public class Resource {
     }
 
     public void acquire() {
-        if (bitmap.isRecycled()) {
+        if (null != bitmap && bitmap.isRecycled()) {
             throw new IllegalStateException("Cannot acquire a recycled resource");
         }
         ++acquired;
@@ -52,6 +52,15 @@ public class Resource {
     public void release() {
         if (--acquired == 0) {
             listener.onResourceReleased(key, this);
+        }
+    }
+
+    public void recycle() {
+        if (acquired > 0) {
+            return;
+        }
+        if (null != bitmap && !bitmap.isRecycled()) {
+            bitmap.recycle();
         }
     }
 }
