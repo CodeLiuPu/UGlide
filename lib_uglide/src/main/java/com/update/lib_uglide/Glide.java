@@ -11,7 +11,10 @@ import android.content.res.Configuration;
  */
 public class Glide implements ComponentCallbacks2 {
 
-    
+    Glide() {
+    }
+
+
     @Override
     public void onTrimMemory(int level) {
 
