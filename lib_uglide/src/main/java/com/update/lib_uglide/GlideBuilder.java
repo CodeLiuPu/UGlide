@@ -1,6 +1,6 @@
 package com.update.lib_uglide;
 
-import android.graphics.Bitmap;
+import com.update.lib_uglide.recycle.BitmapPool;
 
 /**
  * @author : liupu
@@ -9,6 +9,8 @@ import android.graphics.Bitmap;
  * github : https://github.com/CodeLiuPu/
  */
 public class GlideBuilder {
+
+    BitmapPool bitmapPool;
 
     public GlideBuilder() {
 

@@ -18,6 +18,8 @@ public class Glide implements ComponentCallbacks2 {
 
     Glide(Context context) {
         this.context = context.getApplicationContext();
+
+        // 注册机
         registry = new Registry();
     }
 
