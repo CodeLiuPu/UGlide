@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * @author : liupu
  * date   : 2019/12/25
- * desc   :
+ * desc   : 活动资源
  * github : https://github.com/CodeLiuPu/
  */
 public class ActiveResources {
