@@ -1,6 +1,7 @@
 package com.update.lib_uglide;
 
 import android.content.ComponentCallbacks2;
+import android.content.Context;
 import android.content.res.Configuration;
 
 /**
@@ -11,9 +12,14 @@ import android.content.res.Configuration;
  */
 public class Glide implements ComponentCallbacks2 {
 
-    Glide() {
-    }
+    private static volatile Glide glide;
+    private final Context context;
+    private final Registry registry;
 
+    Glide(Context context) {
+        this.context = context.getApplicationContext();
+        registry = new Registry();
+    }
 
     @Override
     public void onTrimMemory(int level) {

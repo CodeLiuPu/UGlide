@@ -9,7 +9,8 @@ import android.graphics.Bitmap;
  * github : https://github.com/CodeLiuPu/
  */
 public interface BitmapPool {
-    
+
+
     void put(Bitmap bitmap);
 
     Bitmap get(int width, int height, Bitmap.Config config);
