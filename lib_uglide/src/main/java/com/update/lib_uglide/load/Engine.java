@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.update.lib_uglide.cache.ActiveResources;
 import com.update.lib_uglide.cache.Key;
+import com.update.lib_uglide.cache.MemoryCache;
 import com.update.lib_uglide.recycle.Resource;
 
 /**
@@ -16,10 +17,12 @@ public class Engine implements Resource.ResourceListener {
     private Context context;
 
     ActiveResources activeResources;
+    MemoryCache memoryCache;
 
-    public Engine(Context context) {
+    public Engine(Context context,MemoryCache memoryCache) {
         this.context = context;
-        activeResources = new ActiveResources(this);
+        this.activeResources = new ActiveResources(this);
+        this.memoryCache = memoryCache;
     }
 
     /**

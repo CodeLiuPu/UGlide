@@ -6,6 +6,7 @@ import java.lang.ref.ReferenceQueue;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author : liupu
@@ -59,7 +60,7 @@ public class ActiveResources {
                 public void run() {
                     while (!isShutdown) {
                         try {
-                            //弱引用被回收 删除对应的key
+                            // 弱引用被回收 删除对应的key
                             ResourceWeakReference ref = (ResourceWeakReference)
                                     resourceReferenceQueue.remove();
                             activeResources.remove(ref.key);
@@ -72,6 +73,22 @@ public class ActiveResources {
             cleanReferenceQueueThread.start();
         }
         return resourceReferenceQueue;
+    }
+
+    void shutdown() {
+        isShutdown = true;
+        if (cleanReferenceQueueThread == null) {
+            return;
+        }
+        cleanReferenceQueueThread.interrupt();
+        try {
+            cleanReferenceQueueThread.join(TimeUnit.SECONDS.toMillis(5));
+            if (cleanReferenceQueueThread.isAlive()) {
+                throw new RuntimeException("Failed to join in time");
+            }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 
     static final class ResourceWeakReference extends WeakReference<Resource> {

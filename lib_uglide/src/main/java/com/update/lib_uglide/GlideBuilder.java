@@ -17,11 +17,6 @@ public class GlideBuilder {
     Engine engine;
     BitmapPool bitmapPool;
     MemoryCache memoryCache;
-    Context context;
-
-    public GlideBuilder(Context context) {
-        this.context = context.getApplicationContext();
-    }
 
     public GlideBuilder setBitmapPool(BitmapPool bitmapPool) {
         this.bitmapPool = bitmapPool;
@@ -33,11 +28,9 @@ public class GlideBuilder {
         return this;
     }
 
-    public Glide build() {
+    public Glide build(Context context) {
 
-        if (engine == null) {
-            engine = new Engine(context);
-        }
+
 
         return new Glide(this);
     }

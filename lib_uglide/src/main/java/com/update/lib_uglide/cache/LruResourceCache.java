@@ -8,7 +8,7 @@ import com.update.lib_uglide.recycle.Resource;
 /**
  * @author : liupu
  * date   : 2019/12/25
- * desc   :
+ * desc   : 内存缓存
  * github : https://github.com/CodeLiuPu/
  */
 public class LruResourceCache extends LruCache<Key, Resource> implements MemoryCache {
