@@ -53,11 +53,11 @@ public class EngineKey implements Key {
 
     @Override
     public int hashCode() {
-        int result = model != null ? model.hashCode() : 0;
-        result = 31 * result + width;
-        result = 31 * result + height;
-        result = 31 * result + hashCode;
-        return result;
+        hashCode = model != null ? model.hashCode() : 0;
+        hashCode = 31 * hashCode + width;
+        hashCode = 31 * hashCode + height;
+        hashCode = 31 * hashCode + hashCode;
+        return hashCode;
     }
 
     @Override
