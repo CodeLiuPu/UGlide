@@ -195,6 +195,12 @@ public final class DiskLruCache implements Closeable {
      * @param valueCount the number of values per cache entry. Must be positive.
      * @param maxSize    the maximum number of bytes this cache should use to store
      * @throws IOException if reading or writing the cache directory fails
+     *                     <p>
+     *                     打开一个缓存目录，如果没有则首先创建它，
+     *                     directory：指定数据缓存地址
+     *                     appVersion：APP版本号，当版本号改变时，缓存数据会被清除
+     *                     valueCount：同一个key可以对应多少文件
+     *                     maxSize：最大可以缓存的数据量
      */
     public static DiskLruCache open(File directory, int appVersion, int valueCount, long maxSize)
             throws IOException {
