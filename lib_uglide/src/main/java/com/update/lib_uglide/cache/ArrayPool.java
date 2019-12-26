@@ -6,7 +6,6 @@ public interface ArrayPool {
 
     void put(byte[] data);
 
-
     void clearMemory();
 
     void trimMemory(int level);
