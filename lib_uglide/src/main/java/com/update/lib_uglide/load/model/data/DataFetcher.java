@@ -6,5 +6,17 @@ package com.update.lib_uglide.load.model.data;
  * desc   :
  * github : https://github.com/CodeLiuPu/
  */
-public class DataFetcher<T> {
+public interface DataFetcher<T> {
+
+    interface DataFetcherCallback<T> {
+        void onFetcherReady(T data);
+
+        void onLoadFailed(Exception e);
+    }
+
+    void loadData(DataFetcherCallback<? super T> callback);
+
+    void cancel();
+
+    Class<T> getDataClass();
 }
